@@ -198,8 +198,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChainEnterpriseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SmallBusinessController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,7 +225,6 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\NewsController.cs" />
     <Compile Include="Models\Survey.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -242,6 +243,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -324,14 +326,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\SmallBusiness\Index.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
-    <Content Include="Views\Survey\Index.cshtml" />
-    <Content Include="Views\Survey\Edit.cshtml" />
-    <Content Include="Views\Survey\View.cshtml" />
+    <Content Include="Views\ChainEnterprise\Index.cshtml" />
     <Content Include="Views\Survey\Create.cshtml" />
+    <Content Include="Views\Survey\Delete.cshtml" />
+    <Content Include="Views\Survey\Details.cshtml" />
+    <Content Include="Views\Survey\Edit.cshtml" />
+    <Content Include="Views\Survey\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ChainEnterprise\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
