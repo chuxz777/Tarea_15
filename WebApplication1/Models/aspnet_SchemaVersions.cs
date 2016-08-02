@@ -12,13 +12,10 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserClaim
+    public partial class aspnet_SchemaVersions
     {
-        public int Id { get; set; }
-        public string UserId { get; set; }
-        public string ClaimType { get; set; }
-        public string ClaimValue { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
+        public string Feature { get; set; }
+        public string CompatibleSchemaVersion { get; set; }
+        public bool IsCurrentVersion { get; set; }
     }
 }

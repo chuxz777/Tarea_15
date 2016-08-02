@@ -12,12 +12,12 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserLogin
+    public partial class aspnet_PersonalizationAllUsers
     {
-        public string LoginProvider { get; set; }
-        public string ProviderKey { get; set; }
-        public string UserId { get; set; }
+        public System.Guid PathId { get; set; }
+        public byte[] PageSettings { get; set; }
+        public System.DateTime LastUpdatedDate { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual aspnet_Paths aspnet_Paths { get; set; }
     }
 }

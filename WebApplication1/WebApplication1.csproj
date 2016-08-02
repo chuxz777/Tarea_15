@@ -208,19 +208,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRole.cs">
+    <Compile Include="Models\aspnet_Applications.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUser.cs">
+    <Compile Include="Models\aspnet_Membership.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
+    <Compile Include="Models\aspnet_Paths.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
+    <Compile Include="Models\aspnet_PersonalizationAllUsers.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
+    <Compile Include="Models\aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Profile.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Roles.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_SchemaVersions.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Users.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_WebEvent_Events.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -264,13 +279,17 @@
       <DependentUpon>Survey.edmx</DependentUpon>
       <LastGenOutput>Survey1.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\Images\apple.png" />
+    <Content Include="Resources\Images\bing.png" />
+    <Content Include="Resources\Images\DataPartners.png" />
+    <Content Include="Resources\Images\nokia.png" />
+    <Content Include="Resources\Images\tomtom.png" />
+    <Content Include="Resources\Images\yahoo.png" />
+    <Content Include="Resources\Images\yp.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <EntityDeploy Include="Models\Survey.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Survey.Designer.cs</LastGenOutput>
