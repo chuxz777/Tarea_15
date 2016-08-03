@@ -26,7 +26,12 @@
                     <li>@Html.ActionLink("News", "Index", "News")</li>
                     <li>@Html.ActionLink("SmallBusiness", "Index", "SmallBusiness")</li>
                     <li>@Html.ActionLink("ChainEnterprise", "Index", "ChainEnterprise")</li>
-                    <li>@Html.ActionLink("Survey", "Create", "Survey")</li>
+                    
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Survey Results", "Index", "survey_results")</li>
+                    }
+
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")

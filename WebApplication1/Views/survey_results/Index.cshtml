@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Survey Results</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -20,6 +17,10 @@
         <th>
             @Html.DisplayNameFor(model => model.stat_date)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.percentage_completed)
+        </th>
+
         <th></th>
     </tr>
 
@@ -35,10 +36,9 @@
             @Html.DisplayFor(modelItem => item.stat_date)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_row }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_row }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_row })
+            @Html.DisplayFor(modelItem => item.percentage_completed) %
         </td>
+
     </tr>
 }
 
