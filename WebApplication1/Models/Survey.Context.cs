@@ -12,6 +12,8 @@ namespace WebApplication1.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class localeze_tareaEntities : DbContext
     {
@@ -36,5 +38,15 @@ namespace WebApplication1.Models
         public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
         public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
         public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
+        public virtual DbSet<survey_results> survey_results { get; set; }
+    
+        public virtual ObjectResult<Nullable<int>> survey_completed(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("survey_completed", emailParameter);
+        }
     }
 }

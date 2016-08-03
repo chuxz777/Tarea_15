@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
+using System.Data.SqlClient;
 
 namespace WebApplication1.Controllers
 {
@@ -17,6 +18,7 @@ namespace WebApplication1.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private localeze_tareaEntities db = new localeze_tareaEntities();
 
         public AccountController()
         {
@@ -68,6 +70,18 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            // ejecutar el sp para ver si el usuario ha contestado el survey
+            var results = db.Database.SqlQuery<int>(
+            "exec survey_completed @email",
+            new SqlParameter("email", model.Email.ToString())).ToList<int>();
+
+            if (results[0] == 0 )
+            {
+               return RedirectToAction("Create", "Survey");
+            }
+
+            else
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -76,6 +90,7 @@ namespace WebApplication1.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
             switch (result)
             {
                 case SignInStatus.Success:
@@ -89,7 +104,38 @@ namespace WebApplication1.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+
+           
+
         }
+
+
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DoSurvey (LoginViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToAction("Create", "Survey");
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return RedirectToLocal(returnUrl);
+            }
+        }
+
+
 
         //
         // GET: /Account/VerifyCode

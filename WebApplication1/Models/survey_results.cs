@@ -12,14 +12,12 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Survey
+    public partial class survey_results
     {
-        public int id_survey { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Email_Address { get; set; }
-        public string Satisfied { get; set; }
-        public string GPS_Used { get; set; }
-        public Nullable<System.DateTime> date_sent { get; set; }
+        public int id_row { get; set; }
+        public Nullable<int> total_surveys { get; set; }
+        public Nullable<int> total_users { get; set; }
+        public Nullable<decimal> percentage_completed { get; set; }
+        public Nullable<System.DateTime> stat_date { get; set; }
     }
 }

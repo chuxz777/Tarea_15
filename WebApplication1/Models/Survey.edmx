@@ -146,6 +146,17 @@
           <Property Name="Email_Address" Type="nvarchar" MaxLength="128" />
           <Property Name="Satisfied" Type="nvarchar" MaxLength="128" />
           <Property Name="GPS_Used" Type="varchar" MaxLength="50" />
+          <Property Name="date_sent" Type="datetime" />
+        </EntityType>
+        <EntityType Name="survey_results">
+          <Key>
+            <PropertyRef Name="id_row" />
+          </Key>
+          <Property Name="id_row" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="total_surveys" Type="int" />
+          <Property Name="total_users" Type="int" />
+          <Property Name="percentage_completed" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="stat_date" Type="datetime" />
         </EntityType>
         <Association Name="FK__aspnet_Me__Appli__38996AB5">
           <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
@@ -279,6 +290,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="survey_completed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="localeze_tareaModelStoreContainer">
           <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" Schema="dbo" store:Type="Tables" />
@@ -292,6 +306,7 @@
           <EntitySet Name="aspnet_UsersInRoles" EntityType="Self.aspnet_UsersInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="survey_results" EntityType="Self.survey_results" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__aspnet_Me__Appli__38996AB5" Association="Self.FK__aspnet_Me__Appli__38996AB5">
             <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
             <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
@@ -351,6 +366,7 @@
           <Property Name="Email_Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Satisfied" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="GPS_Used" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date_sent" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="localeze_tareaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Surveys" EntityType="Self.Survey" />
@@ -404,6 +420,10 @@
             <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
           </AssociationSet>
+          <FunctionImport Name="survey_completed" ReturnType="Collection(Int32)">
+          <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="survey_results" EntityType="localeze_tareaModel.survey_results" />
           </EntityContainer>
         <EntityType Name="aspnet_Applications">
           <Key>
@@ -660,6 +680,16 @@
           <End Type="localeze_tareaModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
           <End Type="localeze_tareaModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
         </Association>
+        <EntityType Name="survey_results">
+          <Key>
+            <PropertyRef Name="id_row" />
+          </Key>
+          <Property Name="id_row" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="total_surveys" Type="Int32" />
+          <Property Name="total_users" Type="Int32" />
+          <Property Name="percentage_completed" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="stat_date" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -669,6 +699,7 @@
           <EntitySetMapping Name="Surveys">
             <EntityTypeMapping TypeName="localeze_tareaModel.Survey">
               <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="date_sent" ColumnName="date_sent" />
                 <ScalarProperty Name="id_survey" ColumnName="id_survey" />
                 <ScalarProperty Name="First_Name" ColumnName="First_Name" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
@@ -818,6 +849,18 @@
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="survey_completed" FunctionName="localeze_tareaModel.Store.survey_completed" />
+          <EntitySetMapping Name="survey_results">
+            <EntityTypeMapping TypeName="localeze_tareaModel.survey_results">
+              <MappingFragment StoreEntitySet="survey_results">
+                <ScalarProperty Name="stat_date" ColumnName="stat_date" />
+                <ScalarProperty Name="percentage_completed" ColumnName="percentage_completed" />
+                <ScalarProperty Name="total_users" ColumnName="total_users" />
+                <ScalarProperty Name="total_surveys" ColumnName="total_surveys" />
+                <ScalarProperty Name="id_row" ColumnName="id_row" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

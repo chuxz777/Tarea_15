@@ -204,6 +204,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SmallBusinessController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="Controllers\survey_resultsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -258,7 +259,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SurveyModels.cs" />
+    <Compile Include="Models\survey_results.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -279,6 +282,9 @@
       <DependentUpon>Survey.edmx</DependentUpon>
       <LastGenOutput>Survey1.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\Images\01_SalesByPhone.jpg" />
+    <Content Include="Resources\Images\02_NavigationHome.jpg" />
+    <Content Include="Resources\Images\03_PhoneHome.jpg" />
     <Content Include="Resources\Images\apple.png" />
     <Content Include="Resources\Images\bing.png" />
     <Content Include="Resources\Images\DataPartners.png" />
@@ -351,6 +357,11 @@
     <Content Include="Views\Survey\Details.cshtml" />
     <Content Include="Views\Survey\Edit.cshtml" />
     <Content Include="Views\Survey\Index.cshtml" />
+    <Content Include="Views\survey_results\Create.cshtml" />
+    <Content Include="Views\survey_results\Delete.cshtml" />
+    <Content Include="Views\survey_results\Details.cshtml" />
+    <Content Include="Views\survey_results\Edit.cshtml" />
+    <Content Include="Views\survey_results\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

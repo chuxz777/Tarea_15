@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.survey_results
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>survey_results</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.total_surveys)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_surveys)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_users)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_users)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stat_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stat_date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

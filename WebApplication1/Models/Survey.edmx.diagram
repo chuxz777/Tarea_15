@@ -26,6 +26,7 @@
         <AssociationConnector Association="localeze_tareaModel.FK__aspnet_Pe__UserI__74AE54BC" />
         <AssociationConnector Association="localeze_tareaModel.FK__aspnet_Pr__UserI__4D94879B" />
         <AssociationConnector Association="localeze_tareaModel.aspnet_UsersInRoles" />
+        <EntityTypeShape EntityType="localeze_tareaModel.survey_results" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

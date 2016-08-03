@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.survey_results
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>survey_results</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.total_surveys)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_surveys)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_users)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_users)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stat_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stat_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_row }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
